@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LegalPatternRecord",
+  "type": "object",
+  "required": ["case_id", "case_name", "court_department", "legal_issue_type", "decision_date"],
+  "properties": {
+    "case_id": { "type": "string" },
+    "case_name": { "type": "string" },
+    "court_department": { "type": "string", "description": "e.g., AD1, AD2, AD3, AD4" },
+    "legal_issue_type": { "type": "string" },
+    "issue_signals": { "type": "array", "items": { "type": "string" } },
+    "precedent_conflicts": { "type": "array", "items": { "type": "string" } },
+    "conflict_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "decision_date": { "type": "string", "format": "date" },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}

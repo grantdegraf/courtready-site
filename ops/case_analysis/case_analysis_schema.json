@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CaseAnalysisRecord",
+  "type": "object",
+  "required": ["case_id", "case_name", "issue_signals", "analyzed_at"],
+  "properties": {
+    "case_id": { "type": "string" },
+    "case_name": { "type": "string" },
+    "court": { "type": "string" },
+    "decision_date": { "type": "string", "format": "date" },
+    "issue_signals": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Detected phrase-level appellate issue signals from opinion text"
+    },
+    "flag_categories": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "summary_judgment_evidence_handling",
+          "evidentiary_standard_application",
+          "coverage_analysis_gap",
+          "incomplete_statutory_analysis"
+        ]
+      }
+    },
+    "precedent_conflict_detected": { "type": "boolean", "default": false },
+    "precedent_conflict_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "precedent_conflicts": { "type": "array", "items": { "type": "string" } },
+    "opportunity_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "routes_to_batch": { "type": "boolean", "default": false },
+    "analyzed_at": { "type": "string", "format": "date-time" }
+  }
+}
